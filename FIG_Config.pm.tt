@@ -1,0 +1,38 @@
+package FIG_Config;
+
+no warnings 'once';
+
+$fig_disk        = "[% fig_disk %]";
+$blastmat        = "[% fig_disk %]/BLASTMAT";
+$fig             = "[% fig_disk %]/FIG";
+$bin             = "[% kb_top %]/bin";
+
+$common_runtime  = "[% kb_runtime %]";
+$ext_bin         = "$common_runtime/bin";
+
+#
+# Currently only use of $arch appears to be as
+#   if ($FIG_Config::arch eq 'win') 
+#
+$arch            = "linux";
+$var             = "[% fig_disk %]/FIG/var";
+$data            = "[% fig_disk %]/FIG/Data";
+$global          = "[% fig_disk %]/FIG/Data/Global";
+$organisms       = "[% fig_disk %]/FIG/Data/Organisms";
+$RC              = "[% fig_disk %]/FIG/ResolutionCenter";
+$NR              = "[% fig_disk %]/FIG/NR";
+#
+# This value of tempdir is used to allow sharing of files
+# plased in $temp with the web server. It should not be
+# used instead of File::Temp.
+#
+$temp            = "[% fig_disk %]/FIG/Tmp";
+$sproutData      = "[% fig_disk %]/FIG/SproutData";
+
+$temp_base       = "/FIG-Tmp/";
+$temp_url        = "[% seed_url_base %]/FIG-Tmp";
+$cgi_url         = "[% seed_url_base %]/FIG";
+
+eval { require FIG_DB_Config; };
+
+1;

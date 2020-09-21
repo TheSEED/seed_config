@@ -19,15 +19,30 @@ PROD_TESTS = $(wildcard t/prod-tests/*.t)
 STARMAN_WORKERS = 8
 STARMAN_MAX_REQUESTS = 100
 
-TPAGE_ARGS = --define kb_top=$(TARGET) --define kb_runtime=$(DEPLOY_RUNTIME) --define kb_service_name=$(SERVICE) \
+TPAGE_ARGS = --define kb_top=$(realpath $(TOP_DIR)) \
+	--define kb_runtime=$(KB_RUNTIME) --define kb_service_name=$(SERVICE) \
 	--define kb_service_port=$(SERVICE_PORT) --define kb_service_dir=$(SERVICE_DIR) \
 	--define kb_sphinx_port=$(SPHINX_PORT) --define kb_sphinx_host=$(SPHINX_HOST) \
 	--define kb_starman_workers=$(STARMAN_WORKERS) \
-	--define kb_starman_max_requests=$(STARMAN_MAX_REQUESTS)
+	--define kb_starman_max_requests=$(STARMAN_MAX_REQUESTS) \
+	--define fig_disk=$(FIG_DISK) 
 
-all: bin 
+all: bin fig_config
+
+.PHONY: fig_config clean
+
+fig_config: lib/FIG_Config.pm
+
+lib/FIG_Config.pm: FIG_Config.pm.tt Makefile
+ifeq ($(FIG_DISK),)
+	@echo "FIG_DISK was not set" 2>&1; exit 1
+endif
+	$(TPAGE) $(TPAGE_ARGS) FIG_Config.pm.tt > lib/FIG_Config.pm
 
 bin: $(BIN_PERL) $(BIN_SERVICE_PERL)
+
+clean: 
+	rm lib/FIG_Config.pm
 
 deploy: deploy-all
 deploy-all: deploy-client 
