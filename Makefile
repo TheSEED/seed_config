@@ -25,7 +25,8 @@ TPAGE_ARGS = --define kb_top=$(realpath $(TOP_DIR)) \
 	--define kb_sphinx_port=$(SPHINX_PORT) --define kb_sphinx_host=$(SPHINX_HOST) \
 	--define kb_starman_workers=$(STARMAN_WORKERS) \
 	--define kb_starman_max_requests=$(STARMAN_MAX_REQUESTS) \
-	--define fig_disk=$(FIG_DISK) 
+	--define fig_disk=$(FIG_DISK) \
+	--define seed_url_base=$(SEED_URL_BASE)
 
 all: bin fig_config
 
