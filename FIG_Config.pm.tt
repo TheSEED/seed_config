@@ -37,6 +37,21 @@ $cgi_url         = "[% seed_url_base %]/FIG";
 
 $force_ajax_to_cgi_url = 1;
 
+$anno3_mode = 1;
+$open_gates = 1;
+
+[% IF seedviewer_default_home -%]
+$seedviewer_default_home = "[% seedviewer_default_home %]";
+[% END -%]
+
+[% IF memcached -%]
+$memcached_namespace = "seed";
+$memcached_config = {
+    servers => ["localhost:11211"],
+    namespace => $memcached_namespace,
+};
+[% END -%]
+
 eval { require FIG_DB_Config; };
 
 1;

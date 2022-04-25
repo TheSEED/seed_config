@@ -26,7 +26,9 @@ TPAGE_ARGS = --define kb_top=$(realpath $(TOP_DIR)) \
 	--define kb_starman_workers=$(STARMAN_WORKERS) \
 	--define kb_starman_max_requests=$(STARMAN_MAX_REQUESTS) \
 	--define fig_disk=$(FIG_DISK) \
-	--define seed_url_base=$(SEED_URL_BASE)
+	--define memcached=$(MEMCACHED) \
+	--define seed_url_base=$(SEED_URL_BASE) \
+	--define seedviewer_default_home=$(SEEDVIEWER_DEFAULT_HOME)
 
 all: bin fig_config
 
@@ -34,7 +36,7 @@ all: bin fig_config
 
 fig_config: lib/FIG_Config.pm
 
-lib/FIG_Config.pm: FIG_Config.pm.tt Makefile
+lib/FIG_Config.pm: FIG_Config.pm.tt Makefile BuildOptions
 ifeq ($(FIG_DISK),)
 	@echo "FIG_DISK was not set" 2>&1; exit 1
 endif
