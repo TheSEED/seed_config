@@ -5,6 +5,7 @@ no warnings 'once';
 $fig_disk        = "[% fig_disk %]";
 $blastmat        = "[% fig_disk %]/BLASTMAT";
 $fig             = "[% fig_disk %]/FIG";
+$kb_top		 = "[% kb_top %]";
 $bin             = "[% kb_top %]/bin";
 
 $templates	 = "[% kb_top %]/lib/templates";
