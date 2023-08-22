@@ -54,5 +54,5 @@ $memcached_config = {
 [% END -%]
 
 eval { require FIG_DB_Config; };
-
+eval { require RAST_Config; };
 1;
