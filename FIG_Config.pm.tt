@@ -40,6 +40,7 @@ $force_ajax_to_cgi_url = 1;
 
 $anno3_mode = 1;
 $open_gates = 1;
+$seedviewer_enabled = 1;
 
 [% IF seedviewer_default_home -%]
 $seedviewer_default_home = "[% seedviewer_default_home %]";
@@ -52,6 +53,13 @@ $memcached_config = {
     namespace => $memcached_namespace,
 };
 [% END -%]
+
+@sphinx_params = ('[% sphinx_host %]', [% sphinx_port %]);
+
+[% TRY %]
+[% INSERT local_config -%]
+[% CATCH %]
+[% END %]
 
 eval { require FIG_DB_Config; };
 

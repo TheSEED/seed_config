@@ -28,7 +28,9 @@ TPAGE_ARGS = --define kb_top=$(realpath $(TOP_DIR)) \
 	--define fig_disk=$(FIG_DISK) \
 	--define memcached=$(MEMCACHED) \
 	--define seed_url_base=$(SEED_URL_BASE) \
-	--define seedviewer_default_home=$(SEEDVIEWER_DEFAULT_HOME)
+	--define seedviewer_default_home=$(SEEDVIEWER_DEFAULT_HOME) \
+	--define sphinx_host=$(SPHINX_HOST) \
+	--define sphinx_port=$(SPHINX_PORT)
 
 all: bin fig_config
 
