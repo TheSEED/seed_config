@@ -20,6 +20,7 @@ $ext_bin         = "$common_runtime/bin";
 $arch            = "linux";
 $var             = "[% fig_disk %]/FIG/var";
 $data            = "[% fig_disk %]/FIG/Data";
+$kegg            = "[% fig_disk %]/FIG/Data/KEGG";
 $global          = "[% fig_disk %]/FIG/Data/Global";
 $organisms       = "[% fig_disk %]/FIG/Data/Organisms";
 $RC              = "[% fig_disk %]/FIG/ResolutionCenter";
